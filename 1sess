@@ -1,0 +1,462 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "+1 smart every second",
+   LoadingTitle = "GET SMART MF",
+   LoadingSubtitle = "by PJEX",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+   KeySystem = false,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Hello"}
+   }
+})
+
+local MainTab = Window:CreateTab("Main", nil)
+local MainSection = MainTab:CreateSection("Main")
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "+1 smart every second",
+   LoadingTitle = "GET SMART MF",
+   LoadingSubtitle = "by PJEX",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Big Hub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+   KeySystem = false,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Hello"}
+   }
+})
+
+local MainTab = Window:CreateTab("Main", nil)
+local MainSection = MainTab:CreateSection("Main")
+
+local Toggle = MainTab:CreateToggle({
+    Name = "Auto Click",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        _G.ToggleValue = Value
+        while true do
+            if _G.ToggleValue then
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("processClicks"):FireServer()
+            end
+            wait()
+        end
+    end,
+})
+
+local tpTab = Window:CreateTab("Teleports", nil)
+local TPSection = tpTab:CreateSection("Tp's")
+
+local Button = tpTab:CreateButton({
+   Name = "Spawn",
+   Callback = function()
+   local targetCFrame = CFrame.new(934.980957, -103.299927, -101.94899, 0.365317196, 1.13640075e-08, 0.93088311, 3.60559689e-08, 1, -2.63576307e-08, -0.93088311, 4.3192788e-08, 0.365317196)
+
+local player = game.Players.LocalPlayer
+local character = player.Character
+
+if character then
+    local rootPart = character:FindFirstChild("HumanoidRootPart")
+    if rootPart then
+        rootPart.CFrame = targetCFrame
+    end
+end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "Ice Zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(585.583313, -103.299919, -125.31041, 0.0636973083, -5.29020312e-08, 0.99796927, 2.65687579e-08, 1, 5.13138794e-08, -0.99796927, 2.32462476e-08, 0.0636973083)
+
+local player = game.Players.LocalPlayer
+local character = player.Character
+
+if character then
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        humanoidRootPart.CFrame = targetCFrame
+    end
+end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "Desert Zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(175.598633, -103.299919, -139.790634, 0.0233477373, -4.89753269e-08, 0.999727428, -2.7905525e-08, 1, 4.96403878e-08, -0.999727428, -2.90569098e-08, 0.0233477373)
+
+local player = game.Players.LocalPlayer
+local character = player.Character
+
+if character then
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        humanoidRootPart.CFrame = targetCFrame
+    end
+end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "Lava Zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(-545.321655, -103.299919, -110.493805, 0.0566666238, -4.49613502e-08, 0.998393178, -1.70442522e-08, 1, 4.60011051e-08, -0.998393178, -1.96235916e-08, 0.0566666238)
+
+local player = game.Players.LocalPlayer
+local character = player.Character
+
+if character then
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        humanoidRootPart.CFrame = targetCFrame
+    end
+end
+   end,
+})
+
+local Toggle = MainTab:CreateToggle({
+   Name = "Inf Jump",
+   CurrentValue = false,
+   Flag = "Toggle1",
+   Callback = function(InfiniteJumpEnabled)
+   local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            if InfiniteJumpEnabled then
+                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end
+        end)
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "WalkSpeed",
+   Range = {16, 250},
+   Increment = 1,
+   Suffix = "WalkSpeed",
+   CurrentValue = 10,
+   Flag = "Slider1",
+   Callback = function(v)
+   local player = game.Players.LocalPlayer
+   local character = player.Character or player.CharacterAdded:Wait()
+   local originalWalkspeed = character.Humanoid.WalkSpeed
+   while true do
+       local currentWalkspeed = character.Humanoid.WalkSpeed
+       local modifiedWalkspeed = v
+       if currentWalkspeed < modifiedWalkspeed then
+           character.Humanoid.WalkSpeed = modifiedWalkspeed
+       elseif currentWalkspeed > modifiedWalkspeed then
+           character.Humanoid.WalkSpeed = originalWalkspeed
+       end
+       wait(0.1)
+   end
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "JumpPower",
+   Range = {50, 500},
+   Increment = 1,
+   Suffix = "JumpPower",
+   CurrentValue = 10,
+   Flag = "Slider1",
+   Callback = function(v)
+   game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+   end,
+})
+
+local Toggle = MainTab:CreateToggle({
+   Name = "Noclip",
+   CurrentValue = false,
+   Flag = "Toggleforshit",
+   Callback = function(v)
+   local runService = game:GetService("RunService")
+   local player = game:GetService("Players").LocalPlayer
+   _G.noclip = not _G.noclip
+   local function ToggleCollision(part)
+       if part:IsA("BasePart") then
+           part.CanCollide = false
+       end
+   end
+   local function NoClipCallback()
+       if _G.noclip then
+           for _, character in ipairs(player.Character:GetDescendants()) do
+               ToggleCollision(character)
+           end
+       end
+   end
+   runService.Stepped:Connect(NoClipCallback)
+   game.StarterGui:SetCore("SendNotification", {Title="PJEX"; Text="Noclip Activated!"; Duration=5;})
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "Mine Zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(-2515.19995, -103.299942, -91.3035202, 0.342454195, 3.77539067e-08, 0.939534545, -6.8865333e-08, 1, -1.50826658e-08, -0.939534545, -5.95362337e-08, 0.342454195)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character then
+       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+       if humanoidRootPart then
+           humanoidRootPart.CFrame = targetCFrame
+       end
+   end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "city zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(-3730.25757, -103.299942, -112.76635, 0.0541353449, -2.39703191e-08, 0.998533607, 6.88045318e-08, 1, 2.02752943e-08, -0.998533607, 6.7606031e-08, 0.0541353449)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character then
+       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+       if humanoidRootPart then
+           humanoidRootPart.CFrame = targetCFrame
+       end
+   end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "enchanted forest",
+   Callback = function()
+   local targetCFrame = CFrame.new(-4996.14209, -103.169556, -117.801651, -0.406467408, 3.0889943e-08, 0.913665295, -5.80094817e-09, 1, -3.6389519e-08, -0.913665295, -2.0091278e-08, -0.406467408)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character then
+       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+       if humanoidRootPart then
+           humanoidRootPart.CFrame = targetCFrame
+       end
+   end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "samurai zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(-6388.32178, -103.130531, -128.943222, 0.0262048412, 1.0342314e-07, 0.999656618, -7.0021045e-08, 1, -1.01623151e-07, -0.999656618, -6.73339784e-08, 0.0262048412)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character then
+       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+       if humanoidRootPart then
+           humanoidRootPart.CFrame = targetCFrame
+       end
+   end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "candy zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(-7871.49951, -103.046082, -182.144821, 0.0487421378, 6.61085719e-09, 0.998811424, -1.58725832e-09, 1, -6.54126575e-09, -0.998811424, -1.26653643e-09, 0.0487421378)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character then
+       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+       if humanoidRootPart then
+           humanoidRootPart.CFrame = targetCFrame
+       end
+   end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "Haunted Zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(-9601.30664, -103.046074, -211.668991, -0.0167260673, -4.71780526e-09, 0.999860108, 2.57987387e-09, 1, 4.76162265e-09, -0.999860108, 2.65915623e-09, -0.0167260673)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character then
+       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+       if humanoidRootPart then
+           humanoidRootPart.CFrame = targetCFrame
+       end
+   end
+   end,
+})
+
+local Button = tpTab:CreateButton({
+   Name = "Heaven zone",
+   Callback = function()
+   local targetCFrame = CFrame.new(-11243.0615, -103.086075, -178.750458, 0.107598536, 5.65453195e-09, -0.994194448, -6.12226714e-09, 1, 5.02495778e-09, 0.994194448, 5.54604584e-09, 0.107598536)
+   local player = game.Players.LocalPlayer
+   local character = player.Character
+   if character then
+       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+       if humanoidRootPart then
+           humanoidRootPart.CFrame = targetCFrame
+       end
+   end
+   end,
+})
+
+local EggTab = Window:CreateTab("Eggs", nil) -- Title, Image
+local EggSection = EggTab:CreateSection("Eggs")
+
+local Toggle = EggTab:CreateToggle({
+    Name = "Zone 1 Egg",
+    CurrentValue = false,
+    Flag = "Toggle12",
+    Callback = function(Value)
+        _G.ToggleValue = Value
+        if _G.ToggleValue then
+            while _G.ToggleValue do
+                local args = {
+                    [1] = "Single",
+                    [2] = "Z1",
+                    [3] = false,
+                    [4] = {},
+                    [5] = false
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("petHatching"):FireServer(unpack(args))
+                wait() -- Wait before sending the request again
+            end
+        end
+    end,
+})
+
+local Toggle = EggTab:CreateToggle({
+    Name = "Zone 2 Egg",
+    CurrentValue = false,
+    Flag = "Toggle2",
+    Callback = function(Value)
+        _G.ToggleValue = Value
+        if _G.ToggleValue then
+            while _G.ToggleValue do
+                local args = {
+                    [1] = "Single",
+                    [2] = "Z2",
+                    [3] = false,
+                    [4] = {},
+                    [5] = false
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("petHatching"):FireServer(unpack(args))
+                wait() -- Wait before sending the request again
+            end
+        end
+    end,
+})
+
+local Toggle = EggTab:CreateToggle({
+    Name = "Zone 3 Egg",
+    CurrentValue = false,
+    Flag = "Toggle3",
+    Callback = function(Value)
+        _G.ToggleValue = Value
+        if _G.ToggleValue then
+            while _G.ToggleValue do
+                local args = {
+                    [1] = "Single",
+                    [2] = "Z3",
+                    [3] = false,
+                    [4] = {},
+                    [5] = false
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("petHatching"):FireServer(unpack(args))
+                wait() -- Wait before sending the request again
+            end
+        end
+    end,
+})
+
+local Toggle = EggTab:CreateToggle({
+    Name = "Zone 4 Egg",
+    CurrentValue = false,
+    Flag = "Toggle4",
+    Callback = function(Value)
+        _G.ToggleValue = Value
+        if _G.ToggleValue then
+            while _G.ToggleValue do
+                local args = {
+                    [1] = "Single",
+                    [2] = "Z4",
+                    [3] = false,
+                    [4] = {},
+                    [5] = false
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("petHatching"):FireServer(unpack(args))
+                wait() -- Wait before sending the request again
+            end
+        end
+    end,
+})
+
+local Toggle = EggTab:CreateToggle({
+    Name = "Zone 5 Egg",
+    CurrentValue = false,
+    Flag = "Toggle5",
+    Callback = function(Value)
+        _G.ToggleValue = Value
+        if _G.ToggleValue then
+            while _G.ToggleValue do
+                local args = {
+                    [1] = "Single",
+                    [2] = "Z5",
+                    [3] = false,
+                    [4] = {},
+                    [5] = false
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("petHatching"):FireServer(unpack(args))
+                wait() -- Wait before sending the request again
+            end
+        end
+    end,
+})
+
+local Toggle = EggTab:CreateToggle({
+    Name = "Zone 6 Egg",
+    CurrentValue = false,
+    Flag = "Toggle6",
+    Callback = function(Value)
+        _G.ToggleValue = Value
+        if _G.ToggleValue then
+            while _G.ToggleValue do
+                local args = {
+                    [1] = "Single",
+                    [2] = "Z6",
+                    [3] = false,
+                    [4] = {},
+                    [5] = false
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("petHatching"):FireServer(unpack(args))
+                wait() -- Wait before sending the request again
+            end
+        end
+    end,
+})
